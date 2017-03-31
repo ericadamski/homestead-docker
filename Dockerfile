@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Jaouad E. <jaouad.elmoussaoui@gmail.com>
+MAINTAINER Eric Adamski "eric.adamski@mb3online.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
