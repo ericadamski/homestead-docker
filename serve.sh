@@ -10,7 +10,7 @@ block="server {
     charset utf-8;
 
     location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
+        proxy_pass http://127.0.0.1:8080;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
