@@ -39,4 +39,4 @@ block="server {
 
 echo "$block" > "/etc/nginx/sites-available/$1"
 ln -fs "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
-supervisorctl restart nginx
+# supervisorctl restart nginx
