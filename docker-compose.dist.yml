@@ -2,7 +2,7 @@ web:
     image: shincoder/homestead:php7.0
     restart: always
     ports:
-        - "8000:80" # web
+        - "8080:80" # web
         - "2222:22" # ssh
         - "35729:35729" # live reload
         - "9876:9876" # karma server

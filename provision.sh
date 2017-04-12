@@ -20,7 +20,7 @@ sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
 sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
 
 # Basic packages
-apt-get install -y sudo software-properties-common nano curl \
+apt-get install -y sudo software-properties-common curl \
 build-essential dos2unix gcc git git-flow libmcrypt4 libpcre3-dev apt-utils \
 make python2.7-dev python-pip re2c supervisor unattended-upgrades whois vim zip unzip
 
@@ -46,6 +46,20 @@ php-mysql php-pgsql php-sqlite3 php-soap \
 php-apcu php-json php-curl php-gd \
 php-gmp php-imap php-mcrypt php-xdebug \
 php-memcached php-redis php-mbstring php-zip
+
+# Docker
+apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+apt-get install docker-ce
 
 # Nginx & PHP-FPM
 apt-get install -y nginx php-fpm
@@ -91,7 +105,7 @@ echo "xdebug.max_nesting_level = 500" >> /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 phpdismod -s cli xdebug
 
 # Set The Nginx & PHP-FPM User
-sed -i '1 idaemon off;' /etc/nginx/nginx.conf
+# sed -i '1 idaemon off;' /etc/nginx/nginx.conf
 sed -i "s/user www-data;/user homestead;/" /etc/nginx/nginx.conf
 sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" /etc/nginx/nginx.conf
 

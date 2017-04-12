@@ -3,7 +3,6 @@
 block="server {
     listen 80;
     server_name $1;
-    root $2;
 
     index index.html index.htm index.php;
 
@@ -39,4 +38,4 @@ block="server {
 
 echo "$block" > "/etc/nginx/sites-available/$1"
 ln -fs "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
-# supervisorctl restart nginx
+supervisorctl restart nginx
